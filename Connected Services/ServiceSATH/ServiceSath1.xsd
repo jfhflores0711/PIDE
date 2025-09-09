@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" />
+  <xs:element name="getDatosRUC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosRUCResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getDatosRUCResult" nillable="true" type="q1:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosSecundarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosSecundariosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getDatosSecundariosResult" nillable="true" type="q2:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDomicilioLegal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDomicilioLegalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getDomicilioLegalResult" nillable="true" type="q3:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRepresentanteLegal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRepresentanteLegalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getRepresentanteLegalResult" nillable="true" type="q4:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosReniec">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDNI" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosReniecResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getDatosReniecResult" nillable="true" type="q5:ERespuestaR" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosSunedu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDatosSuneduResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getDatosSuneduResult" nillable="true" type="q6:EResGTSunedu" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpNaveAeronave">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numeroMatricula" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpNaveAeronaveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpNaveAeronaveResult" nillable="true" type="q7:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpPJRazonSocial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpPJRazonSocialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpPJRazonSocialResult" nillable="true" type="q8:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadPN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadPNResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpTitularidadPNResult" nillable="true" type="q9:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadPJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadPJResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpTitularidadPJResult" nillable="true" type="q10:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadSIRSARP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadSIRSARPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpTitularidadSIRSARPResult" nillable="true" type="q11:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadSIRSARPJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="razonSocial" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpTitularidadSIRSARPJResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpTitularidadSIRSARPJResult" nillable="true" type="q12:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpOficinas">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpOficinasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpOficinasResult" nillable="true" type="q13:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpListarAsientos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zona" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oficina" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="partida" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="registro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpListarAsientosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpListarAsientosResult" nillable="true" type="q14:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpListarAsientosSIRSARP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zona" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oficina" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="partida" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="registro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpListarAsientosSIRSARPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpListarAsientosSIRSARPResult" nillable="true" type="q15:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerDetalleRPV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zona" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oficina" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="placa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerDetalleRPVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpVerDetalleRPVResult" nillable="true" type="q16:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerDetalleRPVExtra">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="zona" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="oficina" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="placa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerDetalleRPVExtraResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpVerDetalleRPVExtraResult" nillable="true" type="q17:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerAsientos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transaccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idImg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nroTotalPag" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nroPagRef" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pagina" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerAsientosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpVerAsientosResult" nillable="true" type="q18:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerAsientoSIRSARP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transaccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idImg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nroTotalPag" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nroPagRef" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pagina" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getSunarpVerAsientoSIRSARPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getSunarpVerAsientoSIRSARPResult" nillable="true" type="q19:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMigracionesDocumento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMigracionesDocumentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMigracionesDocumentoResult" nillable="true" type="q20:ERespuestaM" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntJudiciales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apePaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apeMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Nombres" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntJudicialesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getAntJudicialesResult" nillable="true" type="q21:EResAntJudicial" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntPenales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apePaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apeMaterno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pNombres" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntPenalesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getAntPenalesResult" nillable="true" type="q22:EResAntPenal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntPoliciales">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getAntPolicialesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getAntPolicialesResult" nillable="true" type="q23:EResAntPolicial" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcDatosLicencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iTipoDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNumDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcDatosLicenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMtcDatosLicenciaResult" nillable="true" type="q24:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcRecordConductor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Tipo_Documento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Numero_Documento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Numero_Record" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcRecordConductorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMtcRecordConductorResult" nillable="true" type="q25:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcDatosPapeletas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iTipoDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNumDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcDatosPapeletasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMtcDatosPapeletasResult" nillable="true" type="q26:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcUltimaLicencia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iTipoDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNumDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcUltimaLicenciaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMtcUltimaLicenciaResult" nillable="true" type="q27:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcUltimasSanciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iTipoDocumento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sNumDocumento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getMtcUltimasSancionesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" minOccurs="0" name="getMtcUltimasSancionesResult" nillable="true" type="q28:ERespuestaS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

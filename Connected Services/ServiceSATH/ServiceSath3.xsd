@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:complexType name="ERespuestaS">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="JsonString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ERespuestaS" nillable="true" type="tns:ERespuestaS" />
+  <xs:complexType name="ERespuesta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ERespuesta" nillable="true" type="tns:ERespuesta" />
+  <xs:complexType name="ERespuestaR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="r" nillable="true" type="tns:ReniecPide" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ERespuestaR" nillable="true" type="tns:ERespuestaR" />
+  <xs:complexType name="ReniecPide">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/" base="q1:datosPersona">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fotob64" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReniecPide" nillable="true" type="tns:ReniecPide" />
+  <xs:complexType name="EResGTSunedu">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="r" nillable="true" type="tns:ArrayOfgtPersona" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="respuesta" nillable="true" type="q2:respuestaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EResGTSunedu" nillable="true" type="tns:EResGTSunedu" />
+  <xs:complexType name="ArrayOfgtPersona">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="gtPersona" nillable="true" type="tns:gtPersona" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfgtPersona" nillable="true" type="tns:ArrayOfgtPersona" />
+  <xs:complexType name="gtPersona">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="abreviaturaTitulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaEmision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaResolucion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="nroDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="pais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="resolucion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoGestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoInstitucion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tituloProfesional" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="universidad" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="gtPersona" nillable="true" type="tns:gtPersona" />
+  <xs:complexType name="ERespuestaM">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ERespuesta">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="r" nillable="true" type="q3:respuestaBean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ERespuestaM" nillable="true" type="tns:ERespuestaM" />
+  <xs:complexType name="EResAntJudicial">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ERespuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="r" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EResAntJudicial" nillable="true" type="tns:EResAntJudicial" />
+  <xs:complexType name="EResAntPenal">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ERespuesta">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="r" nillable="true" type="q4:verificarAntecedentesPenalesResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EResAntPenal" nillable="true" type="tns:EResAntPenal" />
+  <xs:complexType name="EResAntPolicial">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ERespuesta">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="r" nillable="true" type="q5:ArrayOfrespuestaPersona" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EResAntPolicial" nillable="true" type="tns:EResAntPolicial" />
+</xs:schema>

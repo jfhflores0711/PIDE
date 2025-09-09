@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="datosPersona">
+    <xs:sequence>
+      <xs:element name="apPrimerField" nillable="true" type="xs:string" />
+      <xs:element name="apSegundoField" nillable="true" type="xs:string" />
+      <xs:element name="direccionField" nillable="true" type="xs:string" />
+      <xs:element name="estadoCivilField" nillable="true" type="xs:string" />
+      <xs:element name="fotoField" nillable="true" type="xs:base64Binary" />
+      <xs:element name="prenombresField" nillable="true" type="xs:string" />
+      <xs:element name="restriccionField" nillable="true" type="xs:string" />
+      <xs:element name="ubigeoField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="datosPersona" nillable="true" type="tns:datosPersona" />
+  <xs:complexType name="respuestaType">
+    <xs:sequence>
+      <xs:element name="cGenericoField" nillable="true" type="xs:string" />
+      <xs:element name="dGenericaField" nillable="true" type="xs:string" />
+      <xs:element name="fechaSuneduField" nillable="true" type="xs:string" />
+      <xs:element name="horaSuneduField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respuestaType" nillable="true" type="tns:respuestaType" />
+  <xs:complexType name="respuestaBean">
+    <xs:sequence>
+      <xs:element name="strCalidadMigratoriaField" nillable="true" type="xs:string" />
+      <xs:element name="strNombresField" nillable="true" type="xs:string" />
+      <xs:element name="strNumRespuestaField" nillable="true" type="xs:string" />
+      <xs:element name="strPrimerApellidoField" nillable="true" type="xs:string" />
+      <xs:element name="strSegundoApellidoField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respuestaBean" nillable="true" type="tns:respuestaBean" />
+  <xs:complexType name="verificarAntecedentesPenalesResponse">
+    <xs:sequence>
+      <xs:element name="xCodigoRespuestaField" nillable="true" type="xs:string" />
+      <xs:element name="xMensajeRespuestaField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="verificarAntecedentesPenalesResponse" nillable="true" type="tns:verificarAntecedentesPenalesResponse" />
+  <xs:complexType name="ArrayOfrespuestaPersona">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="respuestaPersona" nillable="true" type="tns:respuestaPersona" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfrespuestaPersona" nillable="true" type="tns:ArrayOfrespuestaPersona" />
+  <xs:complexType name="respuestaPersona">
+    <xs:sequence>
+      <xs:element name="apellidoMaternoField" nillable="true" type="xs:string" />
+      <xs:element name="apellidoPaternoField" nillable="true" type="xs:string" />
+      <xs:element name="codigoMensajeField" nillable="true" type="xs:string" />
+      <xs:element name="codigoPersonaField" nillable="true" type="xs:string" />
+      <xs:element name="contexturaField" nillable="true" type="xs:string" />
+      <xs:element name="descripcionMensajeField" nillable="true" type="xs:string" />
+      <xs:element name="dobleIdentidadField" nillable="true" type="xs:string" />
+      <xs:element name="estadoCivilField" nillable="true" type="xs:string" />
+      <xs:element name="fechaNacimientoField" nillable="true" type="xs:string" />
+      <xs:element name="homonimiaField" nillable="true" type="xs:string" />
+      <xs:element name="lugarNacimientoField" nillable="true" type="xs:string" />
+      <xs:element name="nombreMadreField" nillable="true" type="xs:string" />
+      <xs:element name="nombrePadreField" nillable="true" type="xs:string" />
+      <xs:element name="nombrecompletoField" nillable="true" type="xs:string" />
+      <xs:element name="nombresField" nillable="true" type="xs:string" />
+      <xs:element name="nroDocumentoField" nillable="true" type="xs:string" />
+      <xs:element name="sexoField" nillable="true" type="xs:string" />
+      <xs:element name="tallaField" nillable="true" type="xs:string" />
+      <xs:element name="tipoDocumentoField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respuestaPersona" nillable="true" type="tns:respuestaPersona" />
+</xs:schema>

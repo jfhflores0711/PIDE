@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OpenB.Entidad.ws" />
+      <xsd:import schemaLocation="http://localhost:50208/ServiceSath.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceSath_getDatosRUC_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosRUC" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosRUC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosRUCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosSecundarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosSecundarios" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosSecundarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosSecundariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDomicilioLegal_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDomicilioLegal" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDomicilioLegal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDomicilioLegalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getRepresentanteLegal_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRepresentanteLegal" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getRepresentanteLegal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getRepresentanteLegalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosReniec_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosReniec" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosReniec_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosReniecResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosSunedu_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosSunedu" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getDatosSunedu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDatosSuneduResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpNaveAeronave_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpNaveAeronave" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpNaveAeronave_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpNaveAeronaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpPJRazonSocial_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpPJRazonSocial" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpPJRazonSocial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpPJRazonSocialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadPN_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadPN" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadPN_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadPNResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadPJ_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadPJ" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadPJ_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadPJResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadSIRSARP_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadSIRSARP" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadSIRSARP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadSIRSARPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadSIRSARPJ_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadSIRSARPJ" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpTitularidadSIRSARPJ_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpTitularidadSIRSARPJResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpOficinas_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpOficinas" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpOficinas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpOficinasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpListarAsientos_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpListarAsientos" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpListarAsientos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpListarAsientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpListarAsientosSIRSARP_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpListarAsientosSIRSARP" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpListarAsientosSIRSARP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpListarAsientosSIRSARPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerDetalleRPV_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerDetalleRPV" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerDetalleRPV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerDetalleRPVResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerDetalleRPVExtra_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerDetalleRPVExtra" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerDetalleRPVExtra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerDetalleRPVExtraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerAsientos_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerAsientos" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerAsientos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerAsientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerAsientoSIRSARP_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerAsientoSIRSARP" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getSunarpVerAsientoSIRSARP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSunarpVerAsientoSIRSARPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMigracionesDocumento_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMigracionesDocumento" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMigracionesDocumento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMigracionesDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntJudiciales_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAntJudiciales" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntJudiciales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAntJudicialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntPenales_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAntPenales" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntPenales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAntPenalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntPoliciales_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAntPoliciales" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getAntPoliciales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAntPolicialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcDatosLicencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcDatosLicencia" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcDatosLicencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcDatosLicenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcRecordConductor_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcRecordConductor" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcRecordConductor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcRecordConductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcDatosPapeletas_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcDatosPapeletas" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcDatosPapeletas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcDatosPapeletasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcUltimaLicencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcUltimaLicencia" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcUltimaLicencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcUltimaLicenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcUltimasSanciones_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcUltimasSanciones" />
+  </wsdl:message>
+  <wsdl:message name="IServiceSath_getMtcUltimasSanciones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMtcUltimasSancionesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceSath">
+    <wsdl:operation name="getDatosRUC">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getDatosRUC" message="tns:IServiceSath_getDatosRUC_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getDatosRUCResponse" message="tns:IServiceSath_getDatosRUC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSecundarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getDatosSecundarios" message="tns:IServiceSath_getDatosSecundarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getDatosSecundariosResponse" message="tns:IServiceSath_getDatosSecundarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDomicilioLegal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getDomicilioLegal" message="tns:IServiceSath_getDomicilioLegal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getDomicilioLegalResponse" message="tns:IServiceSath_getDomicilioLegal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getRepresentanteLegal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getRepresentanteLegal" message="tns:IServiceSath_getRepresentanteLegal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getRepresentanteLegalResponse" message="tns:IServiceSath_getRepresentanteLegal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosReniec">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getDatosReniec" message="tns:IServiceSath_getDatosReniec_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getDatosReniecResponse" message="tns:IServiceSath_getDatosReniec_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSunedu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getDatosSunedu" message="tns:IServiceSath_getDatosSunedu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getDatosSuneduResponse" message="tns:IServiceSath_getDatosSunedu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpNaveAeronave">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpNaveAeronave" message="tns:IServiceSath_getSunarpNaveAeronave_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpNaveAeronaveResponse" message="tns:IServiceSath_getSunarpNaveAeronave_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpPJRazonSocial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpPJRazonSocial" message="tns:IServiceSath_getSunarpPJRazonSocial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpPJRazonSocialResponse" message="tns:IServiceSath_getSunarpPJRazonSocial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadPN">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadPN" message="tns:IServiceSath_getSunarpTitularidadPN_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadPNResponse" message="tns:IServiceSath_getSunarpTitularidadPN_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadPJ">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadPJ" message="tns:IServiceSath_getSunarpTitularidadPJ_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadPJResponse" message="tns:IServiceSath_getSunarpTitularidadPJ_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadSIRSARP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARP" message="tns:IServiceSath_getSunarpTitularidadSIRSARP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARPResponse" message="tns:IServiceSath_getSunarpTitularidadSIRSARP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadSIRSARPJ">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARPJ" message="tns:IServiceSath_getSunarpTitularidadSIRSARPJ_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARPJResponse" message="tns:IServiceSath_getSunarpTitularidadSIRSARPJ_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpOficinas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpOficinas" message="tns:IServiceSath_getSunarpOficinas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpOficinasResponse" message="tns:IServiceSath_getSunarpOficinas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpListarAsientos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpListarAsientos" message="tns:IServiceSath_getSunarpListarAsientos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpListarAsientosResponse" message="tns:IServiceSath_getSunarpListarAsientos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpListarAsientosSIRSARP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpListarAsientosSIRSARP" message="tns:IServiceSath_getSunarpListarAsientosSIRSARP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpListarAsientosSIRSARPResponse" message="tns:IServiceSath_getSunarpListarAsientosSIRSARP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerDetalleRPV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPV" message="tns:IServiceSath_getSunarpVerDetalleRPV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPVResponse" message="tns:IServiceSath_getSunarpVerDetalleRPV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerDetalleRPVExtra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPVExtra" message="tns:IServiceSath_getSunarpVerDetalleRPVExtra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPVExtraResponse" message="tns:IServiceSath_getSunarpVerDetalleRPVExtra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerAsientos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerAsientos" message="tns:IServiceSath_getSunarpVerAsientos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerAsientosResponse" message="tns:IServiceSath_getSunarpVerAsientos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerAsientoSIRSARP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerAsientoSIRSARP" message="tns:IServiceSath_getSunarpVerAsientoSIRSARP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getSunarpVerAsientoSIRSARPResponse" message="tns:IServiceSath_getSunarpVerAsientoSIRSARP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMigracionesDocumento">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMigracionesDocumento" message="tns:IServiceSath_getMigracionesDocumento_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMigracionesDocumentoResponse" message="tns:IServiceSath_getMigracionesDocumento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAntJudiciales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getAntJudiciales" message="tns:IServiceSath_getAntJudiciales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getAntJudicialesResponse" message="tns:IServiceSath_getAntJudiciales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAntPenales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getAntPenales" message="tns:IServiceSath_getAntPenales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getAntPenalesResponse" message="tns:IServiceSath_getAntPenales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAntPoliciales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getAntPoliciales" message="tns:IServiceSath_getAntPoliciales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getAntPolicialesResponse" message="tns:IServiceSath_getAntPoliciales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMtcDatosLicencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMtcDatosLicencia" message="tns:IServiceSath_getMtcDatosLicencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMtcDatosLicenciaResponse" message="tns:IServiceSath_getMtcDatosLicencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMtcRecordConductor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMtcRecordConductor" message="tns:IServiceSath_getMtcRecordConductor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMtcRecordConductorResponse" message="tns:IServiceSath_getMtcRecordConductor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMtcDatosPapeletas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMtcDatosPapeletas" message="tns:IServiceSath_getMtcDatosPapeletas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMtcDatosPapeletasResponse" message="tns:IServiceSath_getMtcDatosPapeletas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMtcUltimaLicencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMtcUltimaLicencia" message="tns:IServiceSath_getMtcUltimaLicencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMtcUltimaLicenciaResponse" message="tns:IServiceSath_getMtcUltimaLicencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMtcUltimasSanciones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceSath/getMtcUltimasSanciones" message="tns:IServiceSath_getMtcUltimasSanciones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceSath/getMtcUltimasSancionesResponse" message="tns:IServiceSath_getMtcUltimasSanciones_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceSath" type="tns:IServiceSath">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getDatosRUC">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getDatosRUC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSecundarios">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getDatosSecundarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDomicilioLegal">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getDomicilioLegal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepresentanteLegal">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getRepresentanteLegal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosReniec">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getDatosReniec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSunedu">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getDatosSunedu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpNaveAeronave">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpNaveAeronave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpPJRazonSocial">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpPJRazonSocial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadPN">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpTitularidadPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadPJ">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpTitularidadPJ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadSIRSARP">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpTitularidadSIRSARPJ">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpTitularidadSIRSARPJ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpOficinas">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpOficinas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpListarAsientos">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpListarAsientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpListarAsientosSIRSARP">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpListarAsientosSIRSARP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerDetalleRPV">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerDetalleRPVExtra">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpVerDetalleRPVExtra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerAsientos">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpVerAsientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSunarpVerAsientoSIRSARP">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getSunarpVerAsientoSIRSARP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMigracionesDocumento">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMigracionesDocumento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAntJudiciales">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getAntJudiciales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAntPenales">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getAntPenales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAntPoliciales">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getAntPoliciales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMtcDatosLicencia">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMtcDatosLicencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMtcRecordConductor">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMtcRecordConductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMtcDatosPapeletas">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMtcDatosPapeletas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMtcUltimaLicencia">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMtcUltimaLicencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMtcUltimasSanciones">
+      <soap:operation soapAction="http://tempuri.org/IServiceSath/getMtcUltimasSanciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IServiceSath" binding="tns:BasicHttpBinding_IServiceSath">
+      <soap:address location="http://localhost:50208/ServiceSath.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
