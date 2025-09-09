@@ -1,0 +1,263 @@
+﻿
+@{
+    ViewBag.Title = "Mantenimiento de usuarios del sistema";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row pb-5">
+    <div class="col-md-12 col-lg-12 col-xl-12 div-reportes" style="margin-left: -5px;">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <h5 class="card-header rounded-0" id="headingTwo">@ViewBag.Title <small id="cod-expediente"></small></h5>
+                <div id="collapse" class="collapse in show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body contenedor_collapse">
+                        <div class="row pb-2">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-2">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <select class="form-control2" id="tipo-busqueda" data-bind="value : tipo_busqueda">
+                                            <option value="1" selected="">Buscar login</option>
+                                            <option value="2">Buscar DNI</option>
+                                            <option value="3">Nombre</option>
+                                            <option value="4">Estado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" data-bind="visible : tipo_busqueda() == 1 ? true: false">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control2" id="txtCodigob" maxlength="12" data-bind="value : busqueda_login" placeholder="Login de usuario">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" data-bind="visible : tipo_busqueda() == 2 ? true:false">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control2" id="txtBechab" value="" data-bind="value : busqueda_dni" placeholder="N° de DNI" onkeypress="return appOpenB.SoloDigitos(event);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" data-bind="visible : tipo_busqueda() == 3 ? true:false">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control2" id="txtPlacab" value="" data-bind="value : busqueda_nombre" placeholder="Nombre">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4" data-bind="visible : tipo_busqueda() == 4 ? true:false">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <select class="form-control2" id="estado-busqueda" data-bind="value : busqueda_estado">
+                                            <option value="1" selected="">ACTIVO</option>
+                                            <option value="0">SUSPENDIDO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-end">
+                                <button type="button" id="bBuscar" class="btn btn-filtrar mr-1" data-bind="click:$root.buscar_proceso" style=""><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click:$root.limpiar_lista" style=""><i class="fa fa-eraser" aria-hidden="true"></i> Limpiar</button>
+                                <button type="button" id="bNuevo" class="btn btn-filtrar" data-bind="click:$root.nuevo_item" style=""><i class="fa fa-plus-circle" aria-hidden="true"></i> Nuevo</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row col-md-12">
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div style="display:none">
+                                        C
+                                        <input type="text" id="CurrentPage" data-bind="value: Pager().CurrentPage">
+
+                                        P
+                                        <input type="text" id="PageSlide" data-bind="value: Pager().PageSlide">
+
+                                        T
+                                        <input type="text" id="TotalItemCount" data-bind="value: SetTotalResults">
+                                    </div>
+                                    <div class="datospag" data-bind="visible: flag_load">
+                                        <div class="spinner-border text-info" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <button type="button" class="btn btn-xs btn-default" data-bind="click: search"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                    </div>
+                                    <div class="datospag">
+                                        <select id="PageSize" style="padding: 3px;" data-bind="value: Pager().PageSize">
+                                            <option value="20" selected>20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="d-flex">
+                                        <div class="ml-auto pagination" data-bind="template:{ name: 'tpl-pager', data: Pager }">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-dni">
+                                                N°
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Cod usuario
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Login
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                DNI
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Ape. Paterno
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Ape. Materno
+                                            </th>
+                                            <th class="anchobusq-rs">
+                                                Nombre
+                                            </th>
+                                            <th class="anchobusq-rs">
+                                                Nombre completo
+                                            </th>
+                                            <th class="anchobusq-rs">
+                                                Cargo
+                                            </th>
+                                            <th class="anchobusq-rs">
+                                                Estado
+                                            </th>
+                                            <th class="anchobusq-accion"><pre>          </pre></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: lista_objetos">
+                                        <tr>
+                                            <td data-bind="text: NRO"></td>
+                                            <td data-bind="text: n_id_usuario"></td>
+                                            <td data-bind="text: c_login"></td>
+                                            <td data-bind="text: c_dni"></td>
+                                            <td data-bind="text: c_appaterno"></td>
+                                            <td data-bind="text: c_apmaterno"></td>
+                                            <td data-bind="text: c_nombres"></td>
+                                            <td data-bind="text: c_nombrec"></td>
+                                            <td data-bind="text: c_cargo"></td>
+                                            <td data-bind="text: c_estado"></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <i class="fa fa-cog"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu pl-1" role="menu" aria-labelledby="dLabel">
+                                                        <li><a tabindex="-1" href="#" data-bind="click: $root.mostrar_detalle_rol"><i class="fa fa-user"></i> Asignar rol</a></li>
+                                                        <li><a tabindex="-1" href="#" data-bind="click: $root.actualizar_clave"><i class="fa fa-user"></i> Actualizar clave</a></li>
+                                                        <li><a tabindex="-1" href="#" data-bind="click: $root.mostrar_elemento"><i class="fa fa-edit"></i> Editar</a></li>
+                                                        <li><a tabindex="-1" href="#" data-bind="click: $root.anular_elemento"><i class="fa fa-trash" color=#F44336></i> Anular</a></li>
+
+                                                    </ul>
+
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("~/Views/Management/_PartialUsuarioItem.cshtml")
+@Html.Partial("~/Views/Management/_PartialRoles.cshtml")
+@Html.Partial("~/Views/Management/_PartialClave.cshtml")
+
+<script type="text/html" id="tpl-pager">
+    <div class="datospag">
+        <div class="pagexofx">
+            <span data-bind="text: FirstItemIndex"></span>
+            -
+            <span data-bind="text: LastItemIndex"></span>
+            de
+            <strong>
+                <span data-bind="text: TotalItemCount"></span>
+            </strong>
+        </div>
+    </div>
+    <div class="pag">
+        <ul>
+            <!-- ko if:CurrentPage() === 1 -->
+            <li class="disabled">
+                <a href="#" class="disabledPage"><i class="fas fa-angle-double-left"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko ifnot:CurrentPage() === 1 -->
+            <li>
+                <a href="#" data-bind="click: function(){ selectPage(1); }"><i class="fas fa-angle-double-left"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko if:HasPrevPage -->
+            <li>
+                <a href="#" data-bind="click: function(){ selectPage(CurrentPage() - 1); }"><i class="fas fa-angle-left"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko ifnot:HasPrevPage -->
+            <li class="disabled">
+                <a href="#" class="disabledPage"><i class="fas fa-angle-left"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko foreach:Pages -->
+            <!-- ko if:$data === $parent.CurrentPage() -->
+            <li class="active">
+                <span class="currentPage" data-bind="text: $data"></span>
+            </li>
+            <!-- /ko -->
+            <!-- ko if:$data !== $parent.CurrentPage() -->
+            <li>
+                <a href="#" data-bind="text: $data, click: function(){ $parent.selectPage($data); }"></a>
+            </li>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if:HasNextPage -->
+            <li>
+                <a href="#" data-bind="click: function(){ selectPage(CurrentPage() + 1); }"><i class="fas fa-angle-right"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko ifnot:HasNextPage -->
+            <li class="disabled">
+                <a href="#" class="disabledPage"><i class="fas fa-angle-right"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko ifnot:CurrentPage() === LastPage() -->
+            <li>
+                <a href="#" data-bind="click: function(){ selectPage(LastPage()); }"><i class="fas fa-angle-double-right"></i></a>
+            </li>
+            <!-- /ko -->
+            <!-- ko if:CurrentPage() === LastPage() -->
+            <li class="disabled">
+                <a href="#" class="disabledPage"><i class="fas fa-angle-double-right"></i></a>
+            </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+</script>
+@section scripts {
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/ko.pager.js"></script>
+    <script src="~/Scripts/App/Management/Usuarios.js?f=22012022"></script>
+    <script>
+        url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

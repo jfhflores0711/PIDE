@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Seguridad del sistema";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">Cambio de contraseña</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4">
+                                <p>
+                                    <h4 class="text-justify color-text">
+                                        Bienvenido a la plataforma de interoperabilidad, para cambiar la clave escribe tu contraseña actual y repide dos veces la nueva clave.
+                                    </h4>
+                                </p>
+                                <div class="alert alert-warning" role="alert">
+                                    <p>Recuerda: longitud de contraseña como mínimo 8 caracteres, caracteres numéricos, letras mayúsculas, letras minpusculas y caracteres especiales ($, %, *, +).</p>
+                                </div>
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <label for="inputPassword1" class="sr-only">Clave actual:</label>
+                                        <input type="password" class="form-control" id="inputPassword1" placeholder="Clave actual" data-bind="value: formulario_cambio().actual">
+                                    </div>
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <label for="inputPassword2" class="sr-only">Nueva clave:</label>
+                                        <input type="password" class="form-control" id="inputPassword2" placeholder="Nueva clave" data-bind="value: formulario_cambio().nuevo1">
+                                    </div>
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <label for="inputPassword3" class="sr-only">Repite nueva clave:</label>
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Repite nueva clave" data-bind="value: formulario_cambio().nuevo2">
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="mostrar-texto" data-bind="checked: formulario_cambio().textop, event: { change: $root.mostrar_texto }">
+                                            <label class="form-check-label" for="mostrar-texto">
+                                                Mostrar contraseñas
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary mb-2" data-bind="click:$root.actualizar_datos">Actualizar clave</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Account/Seguridad.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

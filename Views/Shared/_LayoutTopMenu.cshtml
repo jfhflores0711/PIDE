@@ -1,0 +1,54 @@
+﻿<div class="topbar">
+    <div class="row">
+        <div class="col-md-1" id="div_sigedo">
+            <div class="header-left">
+                <div class="topnav">
+                    <a class="menutoggle" href="#" data-toggle="sidebar-collapsed">
+                        <span class="menu__handle"><span>Menu</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 d-flex justify-content-start align-items-center" id="div_sigedo2">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text_titulo_cab">
+                        Sistema de Enlace de Datos Interinstitucional (SEDI)
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 d-flex justify-content-center align-items-center" id="div_dep">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="text_titulo_cab"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row" id="div_dependencia">
+                <div class="col-md-12">
+                    <ul class="nav ul_pefil">
+
+                        <li class="" id="user-header">
+                            <a href="/Account" id="a_opcion">
+                                <img class="rounded-circle" style="border: 1px solid #0A8CB3;" src="~/Content/app/imagen/icon_persona.png" alt="Usuario imagen" width="50" height="55"><br>
+                            </a>
+
+                        </li>
+                        <li class="li_nombres" style="cursor:default;">
+                            <span class="username">Te damos la Bienvenida,</span><br>
+                                                                                 <span class="nombre_user">
+                                                                                     @(Session["Nombres__"] != null ? Session["Nombres__"].ToString() : string.Empty)
+                                                                                     @(Session["ApePaterno__"] != null ? Session["ApePaterno__"].ToString() : string.Empty)
+                                                                                 </span>
+                        </li>
+                        <li class="li_salir"><a href="javascript:document.getElementById('logoutForm').submit()" id="a_close_sesion"><i class="fas fa-sign-out-alt" style="font-size: 28px;" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión"></i></a></li>
+                        @Html.Partial("_LayoutLogoff")
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

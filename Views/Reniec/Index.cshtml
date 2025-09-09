@@ -1,0 +1,167 @@
+﻿@{
+    ViewBag.Title = "RENIEC - Consulta DNI";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputdocuemnto" maxlength="8" placeholder="N° de DNI" autocomplete="off" data-bind="value: form_busqueda().param1" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba DNI y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+
+                                <table class="table">
+                                    <tbody data-bind="foreach: consulta_resulado">
+                                        <tr>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <!---Inicio tabla--->
+                                                            <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                                                <thead class="">
+                                                                    <tr class="rounded-top" style="height: 40px;">
+                                                                        <th class="anchobusq-ruc">
+                                                                            Dato
+                                                                        </th>
+                                                                        <th class="anchobusq-dni">
+                                                                            Valor
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Apellido paterno:</td>
+                                                                        <td data-bind="text: apPrimer"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Apellido materno:</td>
+                                                                        <td data-bind="text: apSegundo"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Nombres:</td>
+                                                                        <td data-bind="text: prenombres"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Dirección:</td>
+                                                                        <td data-bind="text: direccion"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Ubigeo:</td>
+                                                                        <td data-bind="text: ubigeo"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Estado civil:</td>
+                                                                        <td data-bind="text: estadoCivil"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Restricción:</td>
+                                                                        <td data-bind="text: restriccion"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <!---Fin tabla--->
+                                                        </td>
+                                                        <td>
+                                                            <img alt="" data-bind="attr: { src: 'data:image/jpg;base64,' + fotob64 }" src="">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+
+                                @*<table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                        <thead class="">
+                                            <tr class="rounded-top" style="height: 40px;">
+                                                <th class="anchobusq-ruc">
+                                                    Dato
+                                                </th>
+                                                <th class="anchobusq-dni">
+                                                    Valor
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-bind="foreach: consulta_resulado">
+                                            <tr>
+                                                <td>Apellido paterno:</td>
+                                                <td data-bind="text: apPrimer"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apellido materno:</td>
+                                                <td data-bind="text: apSegundo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nombres:</td>
+                                                <td data-bind="text: prenombres"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dirección:</td>
+                                                <td data-bind="text: direccion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ubigeo:</td>
+                                                <td data-bind="text: ubigeo"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Estado civil:</td>
+                                                <td data-bind="text: estadoCivil"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Restricción:</td>
+                                                <td data-bind="text: restriccion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Foto:</td>
+                                                <td>
+                                                    <img alt="" data-bind="attr: { src: 'data:image/jpg;base64,' + fotob64 }" src="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>*@
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/reniec.js?f=31012022"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

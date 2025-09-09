@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "MTC - Consulta datos de papeleta";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-4">
+                                        <select class="form-control  col-12" name="inputtipodocuemnto" data-bind="value: form_busqueda().param1">
+                                            <option value="1">RUC</option>
+                                            <option value="2" selected>DNI</option>
+                                            <option value="4">CE</option>
+                                            <option value="5">CS</option>
+                                            <option value="6">PASAPORTE</option>
+                                            <option value="13">TI</option>
+                                            <option value="14">PTP</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control col-12" id="inputdocuemnto" maxlength="20" placeholder="N° documento" autocomplete="off" data-bind="value: form_busqueda().param2">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_papeleta">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba número de documento y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    Licencia de conducir
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-dni">
+                                                #
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                N° Documento
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                N° Licencia
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Categoría
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Conductor
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Restricción
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Fecha revalidación
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Fecha expedición
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Estado
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: consulta_resulado">
+                                        <tr>
+                                            <th data-bind="text: $index() + 1">
+                                            </th>
+                                            <th data-bind="text: NUM_DOCUMENTO">
+                                            </th>
+                                            <th data-bind="text: NUM_LICENCIA">
+                                            </th>
+                                            <th data-bind="text: CATEGORIA">
+                                            </th>
+                                            <th data-bind="text: NOMBRE +' ' + APE_PATERNO +' '+ APE_MATERNO">
+                                            </th>
+                                            <th data-bind="text: RESTRICCION">
+                                            </th>
+                                            <th data-bind="text: FECREV">
+                                            </th>
+                                            <th data-bind="text: FECEXP">
+                                            </th>
+                                            <th data-bind="text: ESTADO">
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    Listado de papeletas
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-dni">
+                                                #
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Cod. Administrado
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                N° Infracción
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Entidad
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Papeleta
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Falta
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Fecha infracción
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Estado
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Tipopit
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: consulta_resulado_">
+                                        <tr>
+                                            <th data-bind="text: $index() + 1">
+                                            </th>
+                                            <th data-bind="text: COD_ADMINISTRADO">
+                                            </th>
+                                            <th data-bind="text: NUM_INFRACCION">
+                                            </th>
+                                            <th data-bind="text: ENTIDAD">
+                                            </th>
+                                            <th data-bind="text: PAPELETA">
+                                            </th>
+                                            <th data-bind="text: FALTA">
+                                            </th>
+                                            <th data-bind="text: FEC_INFRACCION">
+                                            </th>
+                                            <th data-bind="text: ESTADO">
+                                            </th>
+                                            <th data-bind="text: TIPOPIT">
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/mtc.js?f=28022022"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

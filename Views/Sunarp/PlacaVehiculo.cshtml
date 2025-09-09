@@ -1,0 +1,174 @@
+﻿@model OpenB.Entidad.ws.ESunarpOfi
+
+@{
+    ViewBag.Title = "MTC - Consulta vehículos";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-3">
+                                        <select class="form-control col-12" data-bind="options: consulta_oficinas, optionsText: 'descripcion', value: form_busqueda().param1"></select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control col-12" id="inputdocuemnto" maxlength="20" placeholder="N° de placa" autocomplete="off" data-bind="value: form_busqueda().param3">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_vehiculo">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba número de documento y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    Datos de vehículo
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-dni">
+                                                #
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Placa
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Serie
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                VIN
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                N° Motor
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Color
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Marca
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Modelo
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Estado
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Sede
+                                            </th>
+                                            <th class="anchobusq-ruc">
+                                                Propietarios
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: consulta_resulado_">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1">
+                                            </td>
+                                            <td data-bind="text: placa">
+                                            </td>
+                                            <td data-bind="text: serie">
+                                            </td>
+                                            <td data-bind="text: vin">
+                                            </td>
+                                            <td data-bind="text: nro_motor">
+                                            </td>
+                                            <td data-bind="text: color">
+                                            </td>
+                                            <td data-bind="text: marca">
+                                            </td>
+                                            <td data-bind="text: modelo">
+                                            </td>
+                                            <td data-bind="text: estado">
+                                            </td>
+                                            <td data-bind="text: sede">
+                                            </td>
+                                            <td>
+                                                <!-- ko if: propietarios.length === undefined -->
+                                                <table class="table-active">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="font-size:10px !important" data-bind="text : propietarios.nombre"></td>
+                                                            <td @*data-bind="text : propietarios.nombre"*@>
+                                                                <button type="button" class="btn btn-limpiar-filtros mr-2" style="font-size:10px !important" data-bind="click: $root.redirigit_asiento"><i class="fa fa-eye"></i> Asientos ..</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                @*<!-- ko if: propietarios > 1 -->*@
+                                                <table class="table-active">
+                                                    <tbody data-bind="foreach : propietarios">
+                                                        <tr>
+                                                            <td style="font-size:10px !important" data-bind="text : nombre"></td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-limpiar-filtros mr-2" style="font-size:10px !important" data-bind="click: $root.redirigit_asiento"><i class="fa fa-eye"></i> Asientos .</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                @*<!-- /ko -->*@
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mTitulares" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Propietarios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tbody data-bind="foreach : propietarios_">
+                        <tr>
+                            <td data-bind="text:$data"></td>
+                            <td>
+                                <button type="button" class="btn btn-limpiar-filtros mr-2" style="font-size:10px !important" data-bind="click: $root.redirigit_asiento_varios"><i class="fa fa-eye"></i> Asientos .</button>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunarp.js?f=240320221702"></script>
+    <script>
+                    url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+                    var model= @Html.Raw(Json.Encode(Model));
+                appOpenB.init(1, model);
+    </script>
+}

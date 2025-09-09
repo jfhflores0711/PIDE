@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "MTC - Consulta datos de record de conductor";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+
+                                    <div class="form-group col-md-12 pb-2">
+                                        <div class="col-md-2">Tipo de búsqueda:</div>
+                                        <div class="col-md-2">
+                                            <label><input class="form-control" name="tipobusqueda" type="radio" data-bind="checked: valor_tipo, checkedValue: 1" /> Nro. Documento</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><input class="form-control" name="tipobusqueda" type="radio" data-bind="checked: valor_tipo, checkedValue: 2" /> Nro. Record</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-2" data-bind="visible: (valor_tipo() == 1 ? true:false)">
+                                        <select class="form-control" name="inputtipodocuemnto" data-bind="value: form_busqueda().param1">
+                                            <option value="1">RUC</option>
+                                            <option value="2" selected>DNI</option>
+                                            <option value="4">CE</option>
+                                            <option value="5">CS</option>
+                                            <option value="6">PASAPORTE</option>
+                                            <option value="13">TI</option>
+                                            <option value="14">PTP</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4" data-bind="visible: (valor_tipo() == 1 ? true:false)">
+                                        <input type="text" class="form-control col-12" id="inputdocuemnto" maxlength="20" placeholder="N° documento" autocomplete="off" data-bind="value: form_busqueda().param2">
+                                    </div>
+                                    <div class="form-group col-md-4" data-bind="visible: (valor_tipo() == 2 ? true:false)">
+                                        <input type="text" class="form-control col-12" id="inputrecord" maxlength="20" placeholder="N° record" autocomplete="off" data-bind="value: form_busqueda().param3">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_record">Buscar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Selecciones y escriba todos los valores para realizar búsqueda!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div>
+                                    <iframe style="width:100%;height:700px;border:none" data-bind="attr: { src: 'data:application/pdf;base64,' + consulta_resulado() }" src="" type="application/pdf"></iframe>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/mtc.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

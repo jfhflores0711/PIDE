@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "SUNARP - Consulta razón social";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputdocuemnto" placeholder="Razón social" autocomplete="off" data-bind="value: form_busqueda().param1">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_rs">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba RUC y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div data-bind="foreach : consulta_resulado">
+
+                                    <table class="table table-sm table-responsive table-hover table-new" style="font-size:10px !important" id="tabla">
+                                        <thead>
+                                            <tr>
+                                                <th>Zona</th>
+                                                <th>Oficina</th>
+                                                <th>Tipo</th>
+                                                <th>Denominación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td data-bind="text : zona" style="font-size:10px !important"></td>
+                                                <td data-bind="text : oficina" style="font-size:10px !important"></td>
+                                                <td data-bind="text : tipo" style="font-size:10px !important"></td>
+                                                <td data-bind="text : denominacion" style="font-size:10px !important"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunarp.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

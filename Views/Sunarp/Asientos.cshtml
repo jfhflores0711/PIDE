@@ -1,0 +1,224 @@
+﻿@model OpenB.Entidad.ws.ESunarpOfi
+
+@{
+    ViewBag.Title = "SUNARP - Búsqueda de Asientos";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-3">
+                                        <select class="form-control col-12" data-bind="options: consulta_oficinas, optionsText: 'descripcion', value: form_busqueda().param1"></select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <select class="form-control col-12" data-bind="value: form_busqueda().param2">
+                                            <option value="">-Selecciona tipo registro-</option>
+                                            <option value="21000">Registro de propiedad inmueble - 21000</option>
+                                            <option value="22000">Registro de personas jurídicas - 22000</option>
+                                            <option value="23000">Registro de personas naturales - 23000</option>
+                                            <option value="24000">Registro de propiedad mueble - 24000</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" class="form-control col-12" id="inputnombre3" placeholder="N° partida" autocomplete="off" data-bind="value: form_busqueda().param3">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_asiento">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba datos completos y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div class="row pb-4">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        Transacción: <span data-bind="text:asiento_transaccion"></span>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        N° de páginas: <span data-bind="text:asiento_transaccion_num_pag"></span>
+                                    </div>
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th class="anchobusq-dni">#</th>
+                                            <th class="anchobusq-dni">Id imagen asiento</th>
+                                            <th class="anchobusq-dni">N° de página</th>
+                                            <th class="anchobusq-dni">Tipo</th>
+                                            <th class="anchobusq-dni">Páginas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : consulta_resulado_">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1"></td>
+                                            <td data-bind="text : idImgAsiento"></td>
+                                            <td data-bind="text : numPag"></td>
+                                            <td data-bind="text : tipo"></td>
+                                            <td>
+                                                <!-- ko if:listPag.length === undefined -->
+                                                <table class="table-active">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>nroPagRef: <span data-bind="text : listPag.nroPagRef"></span></td>
+                                                            <td>pagina: <span data-bind="text : listPag.pagina"></span></td>
+                                                            <td>
+                                                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click: $root.ver_asiento.bind($data,'a','b')"> Ver imagen <i class="fa fa-eye"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                <!-- ko if:listPag.length > 1 -->
+                                                <table class="table-active">
+                                                    <tbody data-bind="foreach : listPag">
+                                                        <tr>
+                                                            <td>nroPagRef: <span data-bind="text : nroPagRef"></span></td>
+                                                            <td>pagina: <span data-bind="text : pagina"></span></td>
+                                                            <td>
+                                                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click: $root.ver_asiento.bind($data,'a',$parent)"> Ver imagen <i class="fa fa-eye"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                @*         <!-- ko if:consulta_resulado_folio().length != 0 -->*@
+                                <div class="row pb-4">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        Fichas: <span data-bind="text: consulta_resulado_ficha().length"></span>
+                                    </div>
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th class="anchobusq-dni">#</th>
+                                            <th class="anchobusq-dni">Id imagen ficha</th>
+                                            <th class="anchobusq-dni">N° de página</th>
+                                            <th class="anchobusq-dni">Tipo</th>
+                                            <th class="anchobusq-dni">Páginas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : consulta_resulado_ficha">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1"></td>
+                                            <td data-bind="text : idImgFicha"></td>
+                                            <td data-bind="text : numPag"></td>
+                                            <td data-bind="text : tipo"></td>
+                                            <td>
+                                                <!-- ko if:listPag.length === undefined -->
+                                                <table class="table-active">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>nroPagRef: <span data-bind="text : listPag.nroPagRef"></span></td>
+                                                            <td>pagina: <span data-bind="text : listPag.pagina"></span></td>
+                                                            <td>
+                                                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click: $root.ver_ficha.bind($data,'a','b')"> Ver imagen . <i class="fa fa-eye"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                                <!-- ko if:listPag.length > 1 -->
+                                                <table class="table-active">
+                                                    <tbody data-bind="foreach : listPag">
+                                                        <tr>
+                                                            <td>nroPagRef: <span data-bind="text : nroPagRef"></span></td>
+                                                            <td>pagina: <span data-bind="text : pagina"></span></td>
+                                                            <td>
+                                                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click: $root.ver_ficha_.bind($data,'a',$parent)"> Ver imagen .. <i class="fa fa-eye"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- /ko -->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                @* <!-- /ko -->*@
+                                @*<!-- ko if:consulta_resulado_folio().length != 0 -->*@
+                                <div class="row pb-4">
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        Folios: <span data-bind="text: consulta_resulado_folio().length"></span>
+                                    </div>
+                                </div>
+                                <table class="table table-sm table-responsive table-hover table-new" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th class="anchobusq-dni">#</th>
+                                            <th class="anchobusq-dni">Id imagen folio</th>
+                                            <th class="anchobusq-dni">N° de página</th>
+                                            <th class="anchobusq-dni">Tipo</th>
+                                            <th class="anchobusq-dni">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : consulta_resulado_folio">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1"></td>
+                                            <td data-bind="text : idImgFolio"></td>
+                                            <td data-bind="text : pagina"></td>
+                                            <td data-bind="text : tipo"></td>
+                                            <td>
+                                                <button type="button" id="bLimpiar" class="btn btn-limpiar-filtros mr-2" data-bind="click: $root.ver_folio"> Ver imagen <i class="fa fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @*<!-- /ko -->*@
+                                <!-- /ko -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modal-imagen" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Imagen de Asiento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="" data-bind="attr:{src: 'data:image/jpg;base64,'+asiento_transaccion_img()}" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunarp.js?f=230320221702"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+            var model= @Html.Raw(Json.Encode(Model));
+        appOpenB.init(1, model);
+    </script>
+}

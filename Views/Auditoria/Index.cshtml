@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Reportes de auditoría";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-6">Año:</label>
+                                        <select class="form-control col-6" name="inputanio" data-bind="value: form_busqueda().param1">
+                                            @for (var i = 2022; i <= DateTime.Now.Year; i++)
+                                            {
+                                                <option value="@i" @(i == DateTime.Now.Year ? "selected" : string.Empty)>@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-6">Mes:</label>
+                                        <select class="form-control col-6" name="inputanio" data-bind="value: form_busqueda().param2">
+                                            @for (var i = 1; i <= 12; i++)
+                                            {
+                                                <option value="@i" @(i == DateTime.Now.Month ? "selected" : string.Empty)>@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button type="button" class="btn btn-primary" data-bind="click:$root.descargar_datos"><i class="fa fa-download"></i> Descargar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+    
+                        <div class="row" style="font-size: 14px; padding-top: 20px;">
+                            <div class="col-md-12 pb-4 text-center">
+                                <center><p>¡Descarga de consultas realizadas en el mes!</p></center>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/reporte.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

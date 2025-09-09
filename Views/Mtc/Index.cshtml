@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "MTC - Consulta datos de licencia de conducir";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-4">
+                                        <select class="form-control col-12" name="inputtipodocuemnto" data-bind="value: form_busqueda().param1">
+                                            <option value="1">RUC</option>
+                                            <option value="2" selected>DNI</option>
+                                            <option value="4">CE</option>
+                                            <option value="5">CS</option>
+                                            <option value="6">PASAPORTE</option>
+                                            <option value="13">TI</option>
+                                            <option value="14">PTP</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control col-12" id="inputdocuemnto" maxlength="20" placeholder="N° documento" autocomplete="off" data-bind="value: form_busqueda().param2">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Seleccione tipo de documento, número de documento y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-ruc">
+                                                Dato
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Valor
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: consulta_resulado">
+                                        <tr>
+                                            <td>Tipo de documento:</td>
+                                            <td data-bind="text: TipoDoc"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>N° de documento:</td>
+                                            <td data-bind="text: NroDocumento"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Correlato:</td>
+                                            <td data-bind="text: Correlato"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>N° de licencia:</td>
+                                            <td data-bind="text: NroLicencia"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Categoría:</td>
+                                            <td data-bind="text: Categoria"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apellido paterno:</td>
+                                            <td data-bind="text: ApellidoPaterno"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apellido materno:</td>
+                                            <td data-bind="text: ApellidoMaterno"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombre:</td>
+                                            <td data-bind="text: Nombre"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Departamento:</td>
+                                            <td data-bind="text: Departamento"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Provincia:</td>
+                                            <td data-bind="text: Provincia"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Distrito:</td>
+                                            <td data-bind="text: Distrito"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dirección:</td>
+                                            <td data-bind="text: Direccion"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha emisión:</td>
+                                            <td data-bind="text: Fechaemision"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha expedición:</td>
+                                            <td data-bind="text: Fechaexpedicion"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fecha revalidación:</td>
+                                            <td data-bind="text: Fecharevalidacion"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estado licencia:</td>
+                                            <td data-bind="text: Estadolicencia"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/mtc.js?f=28022022"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

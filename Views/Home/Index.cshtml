@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "Página principal";
+}
+@section style {
+    <link href="~/Content/css/style_home.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-7 col-lg-8 col-xl-8">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">¡TE DAMOS LA BIENVENIDA!</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <h4 class="text-justify color-text">
+                                        Bienvenido a la plataforma de consultas de servicio e interoperabilidad. En esta versión podrás consultar datos de servicios habilitador por la PIDE de la PCM, los datos consultados pueden tener restricciones establecidas en la <strong>Ley de protección de datos personales, LEY Nº 29733</strong>.
+                                        <br />
+                                        <br />
+                                        <strong>¡Bienvenidos a la transformación digital!</strong>
+
+                                    </h4>
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 col-lg-4 col-xl-4">
+        <div class="panel pt-3 table-scroll table-wrapper-scroll-y" id="right_div">
+            <table class="table" id="table_plantillas" style="border-top: 2px solid #fff;">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2"><span style="font-weight:bold;color: #004a92">Últimos movimientos</span></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: topten">
+                    <tr>
+                        <td style="vertical-align:middle;cursor:pointer" class="text-left" data-bind="text: DESCRIPCION">
+                        </td>
+                        <td style="vertical-align:middle;cursor:pointer" class="text-left" data-bind="text: PARAMETROS">
+                        </td>
+                        <td style="vertical-align:middle;cursor:pointer" data-bind="text: FECHA">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_GENERAL"))
+    {
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-novedades" style="color: #004a92;margin-left: 11px;">Consultas habilitadas</h2>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <div class="row">
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_RENIEC"))
+                        {
+                            <div class="card bg-light mb-3  m-1"  style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas RENIEC</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Reniec")">
+                                        <h5 class="card-title"><i class="fa fa-id-card"></i> Consulta DNI</h5>
+                                        <p class="card-text">Permite consultar datos personales y fotografía.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_SUNAT"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consulta SUNAT</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Sunat")">
+                                        <h5 class="card-title"><i class="fa fa-building"></i> Consulta RUC</h5>
+                                        <p class="card-text">Permite consultar datos de empresas razón social, dirección, estado.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_SUNARP"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultar SUNARP</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fa fa-home"></i> Consultas varios</h5>
+                                    <p class="card-text">
+                                        <a href="@Url.Action("Asientos", "Sunarp")">• Asientos</a><br />
+                                        <a href="@Url.Action("Oficinas", "Sunarp")">• Oficinas</a><br />
+                                        <a href="@Url.Action("Index", "Sunarp")">• Titularidad persona natural</a><br />
+                                        <a href="@Url.Action("TitularidadPj", "Sunarp")">• Titularidad persona jurídica</a><br />
+                                        <a href="@Url.Action("RazonSocial", "Sunarp")">• Consula razón social</a><br />
+                                        <a href="@Url.Action("PlacaVehiculo", "Sunarp")">• Vehículo</a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_MTC"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas del MTC</div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fa fa-car"></i> Consultas disponibles</h5>
+                                    <p class="card-text">
+                                        <a href="@Url.Action("Index", "Mtc")">• Datos de licencia de conducir</a><br />
+                                        <a href="@Url.Action("RecordConductor", "Mtc")">• Record de conductor</a><br />
+                                        <a href="@Url.Action("DatosPapeletas", "Mtc")">• Datos de papeletas</a><br />
+                                        <a href="@Url.Action("UltimaLicencia", "Mtc")">• Datos de última licencia</a><br />
+                                        <a href="@Url.Action("UltimasSanciones", "Mtc")">• Datos de últimas sanciones</a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_SUNEDU"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas del SUNEDU</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Sunedu")">
+                                        <h5 class="card-title"><i class="fa fa-certificate"></i> Consulta de grados y títulos.</h5>
+                                        <p class="card-text">Consulta de grados y títulos de IES.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_APOLICIALES"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas Policía Nacional del Perú</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Antecedentes")">
+                                        <h5 class="card-title"><i class="fa fa-user-secret"></i> Consultas de antecedentes</h5>
+                                        <p class="card-text">Consultas de antecedentes policiales.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_APENALES"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas del Poder Judicial</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Antecedentes")">
+                                        <h5 class="card-title"><i class="fa fa-user-secret"></i> Consultas de antecedentes</h5>
+                                        <p class="card-text">Consultas de antecedentes Penales.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_AJUDICIALES"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas del INPE</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Antecedentes")">
+                                        <h5 class="card-title"><i class="fa fa-user-secret"></i> Consultas de antecedentes</h5>
+                                        <p class="card-text">Consultas de antecedentes Judiciales.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        @if (User.IsInRole("ADMINISTRADOR") || User.IsInRole("CONSULTA_MIGRACIONES"))
+                        {
+                            <div class="card bg-light mb-3  m-1" style="width: 18rem;">
+                                <div class="card-header" style="background: #e71d73 !important">Consultas Migraciones</div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("Index", "Migraciones")">
+                                        <h5 class="card-title"><i class="fa fa-user-secret"></i> Consultas de identidad</h5>
+                                        <p class="card-text">Consultas de Carné de Extranjería.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Home/Home.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+            appHome.init();
+    </script>
+}

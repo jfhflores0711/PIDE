@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Consulta antecedentes";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-3">
+                                        <input type="text" class="form-control" id="inputnombre1" placeholder="N° de DNI" autocomplete="off" data-bind="value: form_busqueda().param1" maxlength="8" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" class="form-control" id="inputnombre2" placeholder="Apellido paterno" autocomplete="off" data-bind="value: form_busqueda().param2" maxlength="50">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" class="form-control" id="inputnombre3" placeholder="Apellido materno" autocomplete="off" data-bind="value: form_busqueda().param3" maxlength="50">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="text" class="form-control" id="inputnombre4" placeholder="Nombre completo" autocomplete="off" data-bind="value: form_busqueda().param4" maxlength="50">
+                                    </div>
+                                    <div class="col-md-12 pt-2 text-center">
+                                        <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+    
+                        <div class="row" style="font-size: 14px; padding-top: 20px;">
+                            <div class="col-md-12 pb-4 text-center">
+                                <!-- ko if:flag_resultado() === true -->
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- /ko -->
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba datos completos y presione buscar (Apellidos y nombres en mayúscula según DNI)!</p></center>
+                                <!-- /ko -->
+                            </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    ANTECEDENTES JUDICIALES
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div id="load_data1" style="display: none;">
+                                        <i class="fa fa-circle-notch fa-spin text-info"></i>
+                                        <span id="load_mensaje1">Consultando datos en PODER JUDICIAL, espere un momento ...</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xl-12">
+                                            <div class="alert alert-info alert-dismissable" style="background-color: #FFF;">
+                                                <h4 style="font-size: 12px; margin-bottom: 0px;"><i class="fa fa-exclamation-circle"></i> <span data-bind="text : antecedente_judicial">*</span></h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xl-12" style="display: none;">
+                                            <table class="table table-bordered" border="1">
+                                                <tbody>
+                                                    <tr><td width="30%"><strong>Mensaje</strong></td><td width="70%"><strong>Descripción</strong></td></tr>
+                                                    <tr><td>Observado</td><td>Existen coincidencias con nombres de internos</td></tr>
+                                                    <tr><td>No registra antecedentes judiciales</td><td>No tiene coincidencias</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    ANTECEDENTES PENALES
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div id="load_data3" style="display: none;">
+                                        <i class="fa fa-circle-notch fa-spin text-info"></i>
+                                        <span id="load_mensaje3">Consultando datos en INPE, espere un momento ...</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xl-12">
+                                            <div class="alert alert-info alert-dismissable" style="background-color: #FFF;">
+                                                <h4 style="font-size: 12px; margin-bottom: 0px;"><i class="fa fa-exclamation-circle"></i> <span data-bind="text : antecedente_penal">*</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    ANTECEDENTES POLICIALES
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div id="load_data2" style="display: none;">
+                                        <i class="fa fa-circle-notch fa-spin text-info"></i>
+                                        <span id="load_mensaje2">Consultando datos en MININTER, espere un momento ...</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xl-12">
+                                            <div class="alert alert-info alert-dismissable" style="background-color: #FFF;">
+                                                <h4 style="font-size: 12px; margin-bottom: 0px;"><i class="fa fa-exclamation-circle"></i> <span data-bind="text : antecedente_policial">*</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/antecedentes.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

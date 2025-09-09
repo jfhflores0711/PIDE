@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "MIGRACIONES - Consulta CARNE EXTRAJERIA";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputdocuemnto" maxlength="15" placeholder="N° de CE" autocomplete="off" data-bind="value: form_busqueda().param1">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba CARNÉ de EXTRAJERÍA y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                    <thead class="">
+                                        <tr class="rounded-top" style="height: 40px;">
+                                            <th class="anchobusq-ruc">
+                                                Dato
+                                            </th>
+                                            <th class="anchobusq-dni">
+                                                Valor
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach: consulta_resulado">
+                                        <tr>
+                                            <td>Calidad migratoria:</td>
+                                            <td data-bind="text: strCalidadMigratoria"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cod. respuesta:</td>
+                                            <td data-bind="text: strNumRespuesta"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombres:</td>
+                                            <td data-bind="text: strNombres"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Primer apellido:</td>
+                                            <td data-bind="text: strPrimerApellido"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Segundo apellido:</td>
+                                            <td data-bind="text: strSegundoApellido"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/migraciones.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

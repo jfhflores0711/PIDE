@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "SUNAT - Consulta RUC";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputdocuemnto" maxlength="11" placeholder="N° de RUC" autocomplete="off" data-bind="value: form_busqueda().param1" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba RUC y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="panel1-tab" data-toggle="tab" href="#panel1" role="tab" aria-controls="panel1" aria-selected="true">Datos principales</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="panel2-tab" data-toggle="tab" href="#panel2" role="tab" aria-controls="panel2" aria-selected="false">Datos secundarios</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="panel3-tab" data-toggle="tab" href="#panel3" role="tab" aria-controls="contact" aria-selected="false">Domicilio legal</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="panel4-tab" data-toggle="tab" href="#panel4" role="tab" aria-controls="contact" aria-selected="false">Representante legal</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="panel1" role="tabpanel" aria-labelledby="panel1-tab">
+
+                                        <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                            <thead class="">
+                                                <tr class="rounded-top" style="height: 40px;">
+                                                    <th class="anchobusq-ruc">
+                                                        Atributo
+                                                    </th>
+                                                    <th class="anchobusq-dni">
+                                                        Valor
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: consulta_resulado">
+                                                <tr><td>RUC:</td><td data-bind="text: ddp_numruc"></td></tr>
+                                                <tr><td>Contribuyente:</td><td data-bind="text: ddp_nombre"></td></tr>
+                                                <tr><td>Tipo contribuyente:</td><td data-bind="text: desc_tpoemp"></td></tr>
+                                                <tr><td>Nombre comercial:</td><td data-bind="text: ddp_lllttt"></td></tr>
+                                                <tr><td>Fecha de inscripción:</td><td data-bind="text: ddp_fecalt"></td></tr>
+                                                <tr><td>Fecha de actualización de inscripción:</td><td data-bind="text: ddp_fecact"></td></tr>
+                                                <tr><td>Estado del contribuyente:</td><td data-bind="text: desc_estado"></td></tr>
+                                                <tr><td>Condición del contribuyente:</td><td data-bind="text: desc_flag22"></td></tr>
+                                                <tr><td>Región:</td><td data-bind="text: desc_dep"></td></tr>
+                                                <tr><td>Provincia:</td><td data-bind="text: desc_prov"></td></tr>
+                                                <tr><td>Distrito:</td><td data-bind="text: desc_dist"></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="panel2" role="tabpanel" aria-labelledby="panel2-tab">
+
+                                        <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                            <thead class="">
+                                                <tr class="rounded-top" style="height: 40px;">
+                                                    <th class="anchobusq-ruc">
+                                                        Atributo
+                                                    </th>
+                                                    <th class="anchobusq-dni">
+                                                        Valor
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: consulta_resulado_secundario">
+                                                <tr><td>Fecha de inicio de actividades:</td><td data-bind="text: DdsInicio"></td></tr>
+                                                <tr><td>Sistema emisión de comprobante:</td><td data-bind="text: DescFactur"></td></tr>
+                                                <tr><td>Sistema contabilidiad:</td><td data-bind="text: DescContab"></td></tr>
+                                                <tr><td>Actividad comercio exterior:</td><td data-bind="text: DescComext"></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="panel3" role="tabpanel" aria-labelledby="panel3-tab">
+                                        <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                            <thead class="">
+                                                <tr class="rounded-top" style="height: 40px;">
+                                                    <th class="anchobusq-ruc">
+                                                        Atributo
+                                                    </th>
+                                                    <th class="anchobusq-dni">
+                                                        Valor
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: consulta_resulado_domicilio">
+                                                <tr><td>Domicilio fiscal:</td><td data-bind="text: DomicilioLegal"></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="panel4" role="tabpanel" aria-labelledby="panel4-tab">
+                                        <table class="table table-sm table-responsive table-hover table-new" style="border-top: 1px solid #f59d24;">
+                                            <thead class="">
+                                                <tr class="rounded-top" style="height: 40px;">
+                                                    <th class="anchobusq-ruc">
+                                                        Atributo
+                                                    </th>
+                                                    <th class="anchobusq-dni">
+                                                        Valor
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: consulta_resulado_representante">
+                                                <tr><td>Representante legal:</td><td data-bind="text: rso_nombre"></td></tr>
+                                                <tr><td>Tipo de documento:</td><td data-bind="text: desc_docide"></td></tr>
+                                                <tr><td>N° de documento:</td><td data-bind="text: rso_nrodoc"></td></tr>
+                                                <tr><td>Cargo:</td><td data-bind="text: rso_cargoo"></td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunat.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

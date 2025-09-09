@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - OpenB</title>
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="~/Content/app/css/estilos.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/style.css?f=30032021" rel="stylesheet" />
+    <link href="~/Content/assets/css/theme.css?f=30032021" rel="stylesheet" />
+    <link href="~/Content/app/librerias/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="~/Content/img/favicon.ico" sizes="32x32">
+    @RenderSection("Style", required: false)
+</head>
+<body class="fixed-topbar theme-sdtl color-default">
+
+
+    <section>
+
+        @Html.Partial("_LayoutSidebar")
+
+
+        <div class="main-content">
+
+            @Html.Partial("_LayoutTopMenu")
+
+            <div class="page-content page-thin" style="padding-top: 95px;">
+
+                @RenderBody()
+
+
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="scrollup"><i class="fa fa-angle-up" style="font-size: 20px;"></i></a>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/umd/popper.min.js"></script>
+    <script src="~/Scripts/umd/popper-utils.min.js"></script>
+    <script src="~/Content/assets/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/assets/plugins/jquery-cookies/jquery.cookies.min.js"></script>
+    <script src="~/Content/assets/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
+    <script src="~/Content/assets/plugins/translate/jqueryTranslator.min.js"></script>
+    <script src="~/Content/assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Content/assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/assets/plugins/backstretch/backstretch.min.js"></script>
+    <script src="~/Content/assets/js/application.js"></script>
+    <script src="~/Content/assets/plugins/select2/select2.min.js"></script>
+    <script src="~/Content/assets/js/widgets/todo_list.js"></script>
+    <script src="~/Content/assets/js/widgets/widget_weather.js"></script>
+    <script src="~/Content/app/js/all.js"></script>
+    <script src="~/Content/app/librerias/alertifyjs/alertify.min.js"></script>
+    <script src="~/Content/app/librerias/alertifyjs/alert.js"></script>
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/App/openB.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

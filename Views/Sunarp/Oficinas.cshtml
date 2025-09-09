@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "SUNARP - Consulta oficinas";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Servicio no disponible!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+
+                                <table class="table table-sm table-responsive table-hover table-new" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th class="anchobusq-dni">#</th>
+                                            <th class="anchobusq-dni">Código oficina</th>
+                                            <th class="anchobusq-dni">Código zona</th>
+                                            <th class="anchobusq-dni">Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : consulta_oficinas">
+                                        <tr>
+                                            <td data-bind="text: $index() + 1"></td>
+                                            <td data-bind="text: codOficina"></td>
+                                            <td data-bind="text: codZona"></td>
+                                            <td data-bind="text: descripcion"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunarp.js?f=230320221702"></script>
+    <script>
+        url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init(1);
+    </script>
+}

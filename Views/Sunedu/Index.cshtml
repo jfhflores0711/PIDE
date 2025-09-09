@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "SUNEDU - Consulta Grados y Títulos";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputdocuemnto" maxlength="8" placeholder="N° de DNI" autocomplete="off" data-bind="value: form_busqueda().param1" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba DNI y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <table class="table table-sm table-responsive table-hover table-new" style="font-size:10px !important" id="tabla">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo&nbsp;de&nbsp;documento</th>
+                                            <th>N°&nbsp;de&nbsp;documento</th>
+                                            <th>Apellido&nbsp;paterno</th>
+                                            <th>Apellido&nbsp;materno</th>
+                                            <th>Nombres</th>
+                                            <th>Abrev.&nbsp;título</th>
+                                            <th>Título&nbsp;profesional</th>
+                                            <th>Universidad</th>
+                                            <th>País</th>
+                                            <th>Tipo&nbsp;de&nbsp;institución</th>
+                                            <th>Tipo&nbsp;de&nbsp;gestión</th>
+                                            <th>Fecha&nbsp;de&nbsp;misión</th>
+                                            <th>Resolución</th>
+                                            <th>Fecha&nbsp;de&nbsp;resolución</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach : consulta_resulado" >
+                                        <tr>
+                                            <td data-bind="text : tipoDocumento" style="font-size:10px !important"></td>
+                                            <td data-bind="text : nroDocumento" style="font-size:10px !important"></td>
+                                            <td data-bind="text : apellidoPaterno" style="font-size:10px !important"></td>
+                                            <td data-bind="text : apellidoMaterno" style="font-size:10px !important"></td>
+                                            <td data-bind="text : nombres" style="font-size:10px !important"></td>
+                                            <td data-bind="text : abreviaturaTitulo" style="font-size:10px !important"></td>
+                                            <td data-bind="text : tituloProfesional" style="font-size:10px !important"></td>
+                                            <td data-bind="text : universidad" style="font-size:10px !important"></td>
+                                            <td data-bind="text : pais" style="font-size:10px !important"></td>
+                                            <td data-bind="text : tipoInstitucion" style="font-size:10px !important"></td>
+                                            <td data-bind="text : tipoGestion" style="font-size:10px !important"></td>
+                                            <td data-bind="text : fechaEmision" style="font-size:10px !important"></td>
+                                            <td data-bind="text : resolucion" style="font-size:10px !important"></td>
+                                            <td data-bind="text : fechaResolucion" style="font-size:10px !important"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunedu.js"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}

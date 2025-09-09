@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "SUNARP - Consulta titularidad persona jurídica";
+}
+@section Style{
+    <link href="~/Content/app/css/style-app.css" rel="stylesheet" />
+    <link href="~/Content/css/paginacion.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel " id="left_div">
+                    <div class="panel-header pt-4 pb-3">
+                        <h2 class="text-bienvinido text-center">@ViewBag.Title </h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <form class="form-inline" onsubmit="return false;">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control col-10" id="inputnombre1" placeholder="Razón social" autocomplete="off" data-bind="value: form_busqueda().param1">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" data-bind="click:$root.consultar_datos_pj">Buscar</button>
+                                </form>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 pb-4 text-center">
+                                <h4 data-bind="text: valor_buscado"></h4>
+                                <!-- ko if:flag_resultado() === false -->
+                                <center><p>¡Escriba dato solicitado y presione buscar!</p></center>
+                                <!-- /ko -->
+                                <!-- ko ifnot:flag_resultado() === false -->
+                                <div data-bind="foreach : consulta_resulado">
+                                    <!-- ko if:libro === 'REGISTRO DE PROPIEDAD VEHICULAR' -->
+                                    <table class="table table-sm table-responsive table-hover table-new" style="font-size:10px !important" id="tabla">
+                                        <thead>
+                                            <tr>
+                                                <th>Registro</th>
+                                                <th>Libro</th>
+                                                <th>Razón social</th>
+                                                <th>Tipo documento</th>
+                                                <th>N° documento</th>
+                                                <th>N° partida</th>
+                                                <th>N° placa</th>
+                                                <th>Estado</th>
+                                                <th>Zona</th>
+                                                <th>Oficina</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td data-bind="text : registro" style="font-size:10px !important"></td>
+                                                <td data-bind="text : libro" style="font-size:10px !important"></td>
+                                                <td data-bind="text : razonSocial" style="font-size:10px !important"></td>
+                                                @*<td data-bind="text : tipoDocumento" style="font-size:10px !important"></td>
+                                                <td data-bind="text : numeroDocumento" style="font-size:10px !important"></td>*@
+                                                <td style="font-size:10px !important">
+                                                    <!-- ko if: $data.tipoDocumento -->
+                                                    <div data-bind="text : tipoDocumento"></div>
+                                                    <!-- /ko -->
+                                                </td>
+                                                <td style="font-size:10px !important">
+                                                    <!-- ko if: $data.numeroDocumento -->
+                                                    <div data-bind="text : numeroDocumento"></div>
+                                                    <!-- /ko -->
+                                                </td>
+                                                <td style="font-size:10px !important"><a href="javascript:void(0)" data-bind="click:$root.consultar_asiento_item"><strong><span data-bind="text : numeroPartida"></span></strong></a></td>
+                                                <td data-bind="text : numeroPlaca" style="font-size:10px !important"></td>
+                                                <td data-bind="text : estado" style="font-size:10px !important"></td>
+                                                <td data-bind="text : zona" style="font-size:10px !important"></td>
+                                                <td data-bind="text : oficina" style="font-size:10px !important"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- /ko -->
+                                    <!-- ko if:libro === 'REGISTRO DE PREDIOS' -->
+                                    <table class="table table-sm table-responsive table-hover table-new" style="font-size:10px !important" id="tabla">
+                                        <thead>
+                                            <tr>
+                                                <th>Registro</th>
+                                                <th>Libro</th>
+                                                <th>Razón social</th>
+                                                <th>Tipo documento</th>
+                                                <th>N° documento</th>
+                                                <th>N° partida</th>
+                                                <th>Estado</th>
+                                                <th>Zona</th>
+                                                <th>Oficina</th>
+                                                <th>Dirección</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td data-bind="text : registro" style="font-size:10px !important"></td>
+                                                <td data-bind="text : libro" style="font-size:10px !important"></td>
+                                                <td data-bind="text : razonSocial" style="font-size:10px !important"></td>
+                                                @*<td data-bind="text : tipoDocumento" style="font-size:10px !important"></td>
+                                                <td data-bind="text : numeroDocumento" style="font-size:10px !important"></td>*@
+                                                <td style="font-size:10px !important">
+                                                    <!-- ko if: $data.tipoDocumento -->
+                                                    <div data-bind="text : tipoDocumento"></div>
+                                                    <!-- /ko -->
+                                                </td>
+                                                <td style="font-size:10px !important">
+                                                    <!-- ko if: $data.numeroDocumento -->
+                                                    <div data-bind="text : numeroDocumento"></div>
+                                                    <!-- /ko -->
+                                                </td>
+                                                <td style="font-size:10px !important"><a href="javascript:void(0)" data-bind="click:$root.consultar_asiento_item"><strong><span data-bind="text : numeroPartida"></span></strong></a></td>
+                                                <td data-bind="text : estado" style="font-size:10px !important"></td>
+                                                <td data-bind="text : zona" style="font-size:10px !important"></td>
+                                                <td data-bind="text : oficina" style="font-size:10px !important"></td>
+                                                <td data-bind="text : direccion" style="font-size:10px !important"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- /ko -->
+                                </div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/App/Servicio/sunarp.js?f=240320221702"></script>
+    <script>
+            url_ = "@Request.Url.Scheme@System.Uri.SchemeDelimiter@Request.Url.Host@(Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port)";
+        appOpenB.init();
+    </script>
+}
