@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>F:\2022\pub_open\wcf</_PublishTargetUrl>
+    <History>True|2025-09-09T15:19:44.4617449Z||;True|2025-09-09T10:08:21.3363763-05:00||;True|2025-09-09T10:08:12.3375403-05:00||;True|2022-07-12T22:13:59.2606163-05:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/05/2020 11:29:47</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.Common.dll">
+      <publishTime>10/04/2013 17:38:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.ProcessingObjectModel.dll">
+      <publishTime>10/04/2013 17:38:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
+      <publishTime>10/04/2013 17:38:48</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/05/2020 11:22:27</publishTime>
+    </File>
+    <File Include="bin/OpeB.DA.dll">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpeB.DA.dll.config">
+      <publishTime>09/09/2025 08:53:20</publishTime>
+    </File>
+    <File Include="bin/OpeB.DA.pdb">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.BL.dll">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.BL.pdb">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.Entidad.dll">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.Entidad.pdb">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.Helper.dll">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.Helper.pdb">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.SathService.dll">
+      <publishTime>09/09/2025 10:19:44</publishTime>
+    </File>
+    <File Include="bin/OpenB.SathService.pdb">
+      <publishTime>09/09/2025 10:19:44</publishTime>
+    </File>
+    <File Include="bin/OpenB.ViewModel.dll">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="bin/OpenB.ViewModel.pdb">
+      <publishTime>09/09/2025 10:19:43</publishTime>
+    </File>
+    <File Include="ServiceSath.svc">
+      <publishTime>01/04/2022 16:35:09</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/09/2025 10:19:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
